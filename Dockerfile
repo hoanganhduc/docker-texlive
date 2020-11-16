@@ -35,7 +35,7 @@ RUN wget ftp://tug.org/historic/systems/texlive/2019/tlnet-final/install-tl-unx.
 	tar xvf install-tl-unx.tar.gz && \
 	rm -rf install-tl-unx.tar.gz && \
 	cd install-tl-20200301 && \
-	./install-tl --profile=/texlive2019.profile --repository ftp://tug.org/historic/systems/texlive/2019/tlnet-final && \
+	./install-tl --profile=/texlive.profile --repository ftp://tug.org/historic/systems/texlive/2019/tlnet-final && \
 	rm -rf /texlive.profile /install-tl-20190410 && \
 	echo "PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH; export PATH" >> /etc/bash.bashrc && \
 	echo "MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
