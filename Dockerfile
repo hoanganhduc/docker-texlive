@@ -1,4 +1,4 @@
-FROM archlinux:latest as base-system
+FROM archlinux:latest
 LABEL author="Duc A. Hoang"
 
 ARG USERNAME=hoanganhduc
@@ -25,11 +25,9 @@ ENV LC_ALL en_US.UTF-8
 
 RUN pacman -Syy
 
-FROM base-system as required-tools
 RUN	pacman -S --noconfirm --needed openssh git curl wget sudo make fontconfig && \
 	yes | pacman -Scc
 
-FROM required-tools as texlive-minimal
 COPY texlive*.profile /
 RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
 	tar xvf install-tl-unx.tar.gz && \
@@ -41,7 +39,6 @@ RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
 	echo "MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
 	echo "INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH; export INFOPATH"  >> /etc/bash.bashrc
 	
-FROM texlive-minimal
 RUN tlmgr install \
 		latexmk \
 		memoir xcolor stmaryrd babel-greek greek-fontenc gfsartemisia babel-vietnamese vntex substitutefont mathdesign xkeyval inconsolata microtype titlesec soul soulutf8 todonotes bbding ccicons adjustbox collectbox standalone gincltex currfile filehook svn-prov filemod import arydshln chessfss skaknew imakeidx tkz-euclide tkz-base numprint pgf-blur upquote ifoddpage ucs ly1 charter easyreview \
@@ -51,4 +48,3 @@ RUN tlmgr install \
 		beamer txfonts platex xelatex-dev textpos
 	
 USER $USERNAME
-
