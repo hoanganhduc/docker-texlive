@@ -31,15 +31,15 @@ RUN	pacman -S --noconfirm --needed openssh git curl wget sudo make fontconfig &&
 
 FROM required-tools as texlive-minimal
 COPY texlive*.profile /
-RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
+RUN wget ftp://tug.org/historic/systems/texlive/2019/tlnet-final/install-tl-unx.tar.gz && \
 	tar xvf install-tl-unx.tar.gz && \
 	rm -rf install-tl-unx.tar.gz && \
-	cd install-tl-20201115 && \
-	./install-tl --profile=/texlive.profile && \
-	rm -rf /texlive.profile /install-tl-20201115 && \
-	echo "PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH; export PATH" >> /etc/bash.bashrc && \
-	echo "MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
-	echo "INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH; export INFOPATH"  >> /etc/bash.bashrc
+	cd install-tl-20200301 && \
+	./install-tl --profile=/texlive2019.profile --repository ftp://tug.org/historic/systems/texlive/2019/tlnet-final && \
+	rm -rf /texlive.profile /install-tl-20190410 && \
+	echo "PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH; export PATH" >> /etc/bash.bashrc && \
+	echo "MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
+	echo "INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH; export INFOPATH"  >> /etc/bash.bashrc
 	
 FROM texlive-minimal
 RUN tlmgr install \
