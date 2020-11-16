@@ -36,7 +36,7 @@ RUN wget ftp://tug.org/historic/systems/texlive/2019/tlnet-final/install-tl-unx.
 	rm -rf install-tl-unx.tar.gz && \
 	cd install-tl-20200301 && \
 	./install-tl --profile=/texlive.profile --repository ftp://tug.org/historic/systems/texlive/2019/tlnet-final && \
-	rm -rf /texlive.profile /install-tl-20190410 && \
+	rm -rf /texlive.profile /install-tl-20200301 && \
 	echo "PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH; export PATH" >> /etc/bash.bashrc && \
 	echo "MANPATH=/usr/local/texlive/2019/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
 	echo "INFOPATH=/usr/local/texlive/2019/texmf-dist/doc/info:$INFOPATH; export INFOPATH"  >> /etc/bash.bashrc
@@ -48,8 +48,7 @@ RUN tlmgr install \
 		etoolbox lastpage hyperxmp ifmtarg totpages times \
 		background everypage algorithms algorithmicx jknapltx rsfs float lipsum \
 		multirow biblatex xpatch biber \
-		beamer txfonts platex xelatex-dev textpos
-		
+		beamer txfonts platex xelatex-dev textpos translator
 		
 	
 USER $USERNAME
