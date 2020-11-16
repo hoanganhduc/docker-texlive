@@ -34,9 +34,9 @@ COPY texlive*.profile /
 RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
 	tar xvf install-tl-unx.tar.gz && \
 	rm -rf install-tl-unx.tar.gz && \
-	cd install-tl-$(date +%Y%m%d) && \
+	cd $(basename install-tl-*) && \
 	./install-tl --profile=/texlive.profile && \
-	rm -rf /texlive.profile /install-tl-$(date +%Y%m%d) && \
+	rm -rf /texlive.profile /install-tl-* && \
 	echo "PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH; export PATH" >> /etc/bash.bashrc && \
 	echo "MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
 	echo "INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH; export INFOPATH"  >> /etc/bash.bashrc
