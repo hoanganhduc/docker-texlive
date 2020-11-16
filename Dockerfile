@@ -48,9 +48,8 @@ RUN tlmgr install \
 		etoolbox lastpage hyperxmp ifmtarg totpages times \
 		background everypage algorithms algorithmicx jknapltx rsfs float lipsum \
 		multirow biblatex xpatch biber \
-		beamer txfonts platex xelatex-dev textpos
-		
-		
+		beamer txfonts platex xelatex-dev textpos translator
 	
 USER $USERNAME
+WORKDIR $USERHOME
 
