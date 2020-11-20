@@ -25,7 +25,7 @@ ENV LC_ALL en_US.UTF-8
 
 RUN pacman -Syy
 
-RUN	pacman -S --noconfirm --needed openssh git curl wget sudo make fontconfig && \
+RUN	pacman -S --noconfirm --needed openssh git curl wget sudo make fontconfig tree && \
 	yes | pacman -Scc
 
 COPY texlive*.profile /
