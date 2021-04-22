@@ -35,9 +35,9 @@ RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
 	cd $(basename install-tl-*) && \
 	./install-tl --profile=/texlive.profile && \
 	rm -rf /texlive.profile /install-tl-* && \
-	echo "PATH=/usr/local/texlive/2020/bin/x86_64-linux:$PATH; export PATH" >> /etc/bash.bashrc && \
-	echo "MANPATH=/usr/local/texlive/2020/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
-	echo "INFOPATH=/usr/local/texlive/2020/texmf-dist/doc/info:$INFOPATH; export INFOPATH"  >> /etc/bash.bashrc
+	echo "PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH; export PATH" >> /etc/bash.bashrc && \
+	echo "MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
+	echo "INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH; export INFOPATH"  >> /etc/bash.bashrc
 	
 RUN tlmgr install \
 		latexmk \
