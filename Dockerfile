@@ -38,6 +38,8 @@ RUN wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
 	echo "PATH=/usr/local/texlive/2021/bin/x86_64-linux:$PATH; export PATH" >> /etc/bash.bashrc && \
 	echo "MANPATH=/usr/local/texlive/2021/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
 	echo "INFOPATH=/usr/local/texlive/2021/texmf-dist/doc/info:$INFOPATH; export INFOPATH"  >> /etc/bash.bashrc
+
+RUN tlmgr update --self
 	
 RUN tlmgr install \
 		latexmk \
@@ -45,6 +47,7 @@ RUN tlmgr install \
 		etoolbox lastpage hyperxmp ifmtarg totpages times \
 		background everypage algorithms algorithmicx jknapltx rsfs float lipsum \
 		multirow biblatex xpatch biber \
-		beamer txfonts platex xelatex-dev textpos
+		beamer txfonts platex xelatex-dev textpos \
+		bxcjkjatype moderncv cjk cjkpunct ipaex-type1
 	
 USER $USERNAME
