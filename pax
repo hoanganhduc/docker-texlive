@@ -1,0 +1,7 @@
+#!/bin/sh
+
+PAX_JAR=/usr/local/texlive/2024/texmf-dist/scripts/pax/pax.jar
+PDFBOX_JAR=/usr/share/java/PDFBox-0.7.3/lib/PDFBox-0.7.3.jar
+#PDFBOX_JAR=/usr/share/pdfbox/pdfbox.jar
+
+java -cp $PAX_JAR:$PDFBOX_JAR pax.PDFAnnotExtractor "$@"
