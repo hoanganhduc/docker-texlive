@@ -56,12 +56,13 @@ RUN useradd \
 	echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER $USERNAME
+WORKDIR $USERNAME
 
 RUN git clone https://aur.archlinux.org/yay.git && \
 	cd yay && \
-	makepkg --noconfirm -si && \
+	makepkg --noconfirm --needed -sri && \
 	cd .. && \
-	rm -rf yay 
+	rm -rf yay
 
 RUN yay -S --noconfirm --needed oh-my-zsh-git && \
 	yes | yay -Scc
