@@ -80,7 +80,7 @@ RUN yay -S --noconfirm --needed oh-my-zsh-git \
 	yes | yay -Scc
 
 # Copy custom zsh configuration
-COPY zshrc /home/$USER/.zshrc
+COPY .zshrc /home/$USERNAME/
 
 # Set the default command to zsh
 CMD [ "/bin/zsh" ]
