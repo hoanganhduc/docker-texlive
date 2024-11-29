@@ -1,6 +1,5 @@
 # hoanganhduc/texlive
 
-A custom TeXLive installation with packages I often use.
+A customized TeXLive installation with additional tools frequently used for LaTeX editing.
 
-Automated build image: [hoanganhduc/texlive](https://github.com/hoanganhduc/docker-texlive/pkgs/container/texlive).
-
+Automated build image available at: [hoanganhduc/texlive](https://github.com/hoanganhduc/docker-texlive/pkgs/container/texlive).
