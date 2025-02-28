@@ -26,18 +26,22 @@ RUN	pacman -S --noconfirm --needed base-devel zsh zsh-completions openssh git cu
 	perl-file-homedir perl-yaml-tiny && \
 	yes | pacman -Scc
 
-# Copy TeXLive profile and install TeXLive
-COPY texlive*.profile /
-RUN wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
-	tar xvf install-tl-unx.tar.gz && \
-	rm -rf install-tl-unx.tar.gz && \
-	cd $(basename install-tl-*) && \
-	./install-tl --profile=/texlive.profile && \
-	rm -rf /texlive.profile /install-tl-* && \
-	echo "PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH; export PATH" >> /etc/bash.bashrc && \
-	echo "MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
-	echo "INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH; export INFOPATH"  >> /etc/bash.bashrc && \
-	tlmgr update --self
+## Copy TeXLive profile and install TeXLive
+#COPY texlive*.profile /
+#RUN wget https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz && \
+	#tar xvf install-tl-unx.tar.gz && \
+	#rm -rf install-tl-unx.tar.gz && \
+	#cd $(basename install-tl-*) && \
+	#./install-tl --profile=/texlive.profile && \
+	#rm -rf /texlive.profile /install-tl-* && \
+	#echo "PATH=/usr/local/texlive/2024/bin/x86_64-linux:$PATH; export PATH" >> /etc/bash.bashrc && \
+	#echo "MANPATH=/usr/local/texlive/2024/texmf-dist/doc/man:$MANPATH; export MANPATH"  >> /etc/bash.bashrc && \
+	#echo "INFOPATH=/usr/local/texlive/2024/texmf-dist/doc/info:$INFOPATH; export INFOPATH"  >> /etc/bash.bashrc && \
+	#tlmgr update --self
+
+# Install TeXLive from Arch repository
+RUN pacman -S --noconfirm --needed texlive texlive-lang texlive-doc biber && \
+	yes | pacman -Scc
 	
 # Copy pax binary to /usr/bin/
 COPY pax /usr/bin/
