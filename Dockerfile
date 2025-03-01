@@ -47,7 +47,7 @@ RUN pacman -S --noconfirm --needed texlive texlive-lang texlive-doc biber && \
 COPY pax /usr/bin/
 
 # Copy custom zsh configuration
-COPY .zshrc /home/$USERNAME/
+COPY .zshrc /root/
 
 # Download and install PDFBox
 RUN wget https://cyfuture.dl.sourceforge.net/project/pdfbox/PDFBox/PDFBox-0.7.3/PDFBox-0.7.3.zip \
