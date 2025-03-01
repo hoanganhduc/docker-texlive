@@ -244,3 +244,5 @@ transfer()
             return 1
     esac
 }
+
+export PATH=$PATH:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl

@@ -41,7 +41,8 @@ RUN	pacman -S --noconfirm --needed base-devel zsh zsh-completions openssh git cu
 
 # Install TeXLive from Arch repository
 RUN pacman -S --noconfirm --needed texlive texlive-lang texlive-doc biber && \
-	yes | pacman -Scc
+	yes | pacman -Scc && \
+	echo 'export PATH=$PATH:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl' >> /etc/profile
 	
 # Copy pax binary to /usr/bin/
 COPY pax /usr/bin/
