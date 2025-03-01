@@ -41,13 +41,13 @@ RUN	pacman -S --noconfirm --needed base-devel zsh zsh-completions openssh git cu
 
 # Install TeXLive from Arch repository
 RUN pacman -S --noconfirm --needed texlive texlive-lang texlive-doc biber && \
-	yes | pacman -Scc && \
-	echo "PATH=/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$PATH" >> /etc/bash.bashrc && \
-	echo "PATH=/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$PATH" >> /etc/profile.d/perl-path.sh && \
-	chmod +x /etc/profile.d/perl-path.sh
+	yes | pacman -Scc
 	
 # Copy pax binary to /usr/bin/
 COPY pax /usr/bin/
+
+# Copy custom zsh configuration
+COPY .zshrc /home/$USERNAME/
 
 # Download and install PDFBox
 RUN wget https://cyfuture.dl.sourceforge.net/project/pdfbox/PDFBox/PDFBox-0.7.3/PDFBox-0.7.3.zip \
